@@ -1,0 +1,68 @@
+"""Typed data contracts shared by OCR, extraction, and rendering."""
+
+from pydantic import BaseModel, ConfigDict
+
+
+class InvoiceData(BaseModel):
+    """Fields expected by the commercial-invoice template."""
+
+    model_config = ConfigDict(extra="ignore", coerce_numbers_to_str=True)
+
+    beneficiary_name_and_address: str = ""
+    applicant_name_and_address: str = ""
+    invoice_number: str = ""
+    invoice_date: str = ""
+    vessel_name: str = ""
+    bill_of_lading_number: str = ""
+    bill_of_lading_date: str = ""
+    vessel_imo: str = ""
+    contract_number: str = ""
+    documentary_credit_number: str = ""
+    documentary_credit_date: str = ""
+    country_of_origin: str = ""
+    lc_issuing_bank: str = ""
+    exact_description_of_goods_for_invoice: str = ""
+    port_of_loading: str = ""
+    port_of_discharge: str = ""
+    base_unit_price_numeric: str = ""
+    total_quantity_shipped: str = ""
+    adjusted_base_price: str = ""
+    total_shipment_value: str = ""
+    actual_tm_result: str = ""
+    actual_ash_result: str = ""
+    actual_inherent_moisture: str = ""
+    actual_volatile_matter: str = ""
+    actual_sulphur_result: str = ""
+    actual_gcv_arb_result: str = ""
+    actual_gcv: str = ""
+    actual_fixed_carbon: str = ""
+    actual_hard_grove_index: str = ""
+    actual_size_crushed: str = ""
+    tm_typical: str = ""
+    tm_rejection: str = ""
+    ash_typical: str = ""
+    ash_rejection: str = ""
+    inherent_moisture_typical: str = ""
+    inherent_moisture_rejection: str = ""
+    sulphur_typical: str = ""
+    sulphur_rejection: str = ""
+    gcv_typical: str = ""
+    gcv_rejection: str = ""
+    fixed_carbon_typical: str = ""
+    fixed_carbon_rejection: str = ""
+    hgi_typical: str = ""
+    hgi_rejection: str = ""
+    size_typical: str = ""
+    size_rejection: str = ""
+    volatile_matter_typical: str = ""
+    volatile_matter_rejection: str = ""
+    adjusted_price: str = ""
+    specifications_disclaimer: str = ""
+    cargo_value_clause: str = ""
+    total_shipment_value_words: str = ""
+    price_adjustment_clause: str = ""
+
+    @classmethod
+    def field_names(cls) -> list[str]:
+        """Return the stable list of model fields used in prompts and evals."""
+        return list(cls.model_fields)

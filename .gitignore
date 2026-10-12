@@ -4,6 +4,7 @@
 .env.*.local
 .venv/
 __pycache__/
+/eval/predictions/
 
 # ChromaDB local persistence directories
 /chroma/
